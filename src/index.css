@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 30% 96%;
+    --foreground: 220 20% 12%;
+
+    --card: 40 20% 98%;
+    --card-foreground: 220 20% 12%;
+
+    --popover: 40 20% 98%;
+    --popover-foreground: 220 20% 12%;
+
+    --primary: 36 90% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 10% 90%;
+    --secondary-foreground: 220 15% 25%;
+
+    --muted: 220 10% 92%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 36 90% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 10% 85%;
+    --input: 220 10% 85%;
+    --ring: 36 90% 45%;
+
+    --radius: 0.75rem;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --gradient-warm: linear-gradient(135deg, hsl(36 90% 45%), hsl(20 85% 45%));
+    --gradient-dark: linear-gradient(180deg, hsl(40 30% 96%), hsl(40 20% 92%));
+    --shadow-glow: 0 0 40px -10px hsl(36 90% 45% / 0.2);
+    --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.1);
+
+    --sidebar-background: 40 20% 98%;
+    --sidebar-foreground: 220 20% 12%;
+    --sidebar-primary: 36 90% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 10% 90%;
+    --sidebar-accent-foreground: 220 15% 25%;
+    --sidebar-border: 220 10% 85%;
+    --sidebar-ring: 36 90% 45%;
+  }
+
+  .dark {
+    --background: 220 20% 7%;
+    --foreground: 40 20% 92%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 40 20% 92%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 40 20% 92%;
+
+    --primary: 36 90% 55%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 40 20% 85%;
+
+    --muted: 220 15% 13%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 36 90% 55%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 36 90% 55%;
+
+    --gradient-warm: linear-gradient(135deg, hsl(36 90% 55%), hsl(20 85% 50%));
+    --gradient-dark: linear-gradient(180deg, hsl(220 20% 7%), hsl(220 18% 12%));
+    --shadow-glow: 0 0 40px -10px hsl(36 90% 55% / 0.3);
+    --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.5);
+
+    --sidebar-background: 220 18% 10%;
+    --sidebar-foreground: 40 20% 92%;
+    --sidebar-primary: 36 90% 55%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 40 20% 85%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 36 90% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-display antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .nav-overlay {
+    @apply fixed inset-0 z-40;
+    background: hsl(var(--background) / 0.95);
+    backdrop-filter: blur(20px);
+  }
+
+  .gradient-text {
+    background: var(--gradient-warm);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .section-padding {
+    @apply px-6 py-20 md:px-12 lg:px-24;
+  }
+
+  .section-heading {
+    @apply mb-8 text-2xl font-bold text-foreground;
+  }
+
+  .info-card {
+    @apply rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/30;
+    &:hover {
+      box-shadow: var(--shadow-glow);
+    }
+  }
+
+  .info-card-title {
+    @apply text-lg font-bold text-foreground;
+  }
+
+  .info-card-subtitle {
+    @apply mt-1 text-sm font-medium text-primary;
+  }
+
+  .info-card-meta {
+    @apply font-mono text-xs text-muted-foreground;
+  }
+
+  .info-card-description {
+    @apply mt-2 text-sm text-muted-foreground leading-relaxed;
+  }
+
+  .social-icon-link {
+    @apply flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary;
+  }
+
+  .carousel-slide {
+    @apply relative w-full overflow-hidden;
+  }
+
+  .category-badge {
+    @apply inline-block px-4 py-1.5 text-xs font-mono font-medium tracking-widest uppercase rounded-full border border-primary/30 bg-primary/10 text-primary;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
