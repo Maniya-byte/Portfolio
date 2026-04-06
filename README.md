@@ -1,0 +1,1 @@
+Network & Security Enthusiast | BICT (Hons) | Self-learner documenting my journey in configuring and troubleshooting firewalls, servers, and switches. Currently building out labs and tackling CCNA. 🌍 Sri Lanka
